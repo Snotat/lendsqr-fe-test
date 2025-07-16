@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+$sky-blue: #39CDCC;
+$text-colour: #213f7d;
+$light-text-collor: #545f7d;
+
+.container {
+  width: 283px;
+  height:100%;
+  background: #fff;
+box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
+font-size: 16px;
+font-weight: 400;
+
+          font-family: "Work Sans", sans-serif;
+margin-top: 100px;
+position: absolute;
+left: 0;
+bottom: 0;
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
+
+  .sidebar {
+    height: calc(100% - 100px);
+    overflow: auto;
+    margin-top: 100px;
+   
+scrollbar-width: none; 
+  -ms-overflow-style: none; 
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+
+  &:hover {
+    scrollbar-width: thin; 
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      transition: background-color 0.2s ease;
+    }
+  }
+    .heading {
+        color: #545f7d;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        padding-left: 30px;
+        margin-top: 0;
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: 30px;
+      }
+    .switch {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 42px;
+      padding: 39px 10px 0 30px;
+      text {
+        color: $text-colour;
+        margin: 0;
+      }
+          icon {
+        color: $text-colour;
+        width: 20px;
+
+      }
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      height: 40px;
+      margin-bottom: 10px;
+      padding-left: 30px;
+      cursor: pointer;
+      text-decoration: none;
+      opacity: 0.6;
+color: $text-colour;
+      &:hover {
+        background-color: #39CDCC0f;
+        border-left: solid 3px $sky-blue;
+        padding-left: 27px;
+        opacity: 1;
+      }
+
+      .collection {
+        margin-bottom: 31px;
+        
+      }
+
+    
+img{
+}
+      text {
+        color: $text-colour;
+      }
+  
+    }
+
+    .active {
+      background-color: rgba(57, 205, 204, 0.06);
+      border-left: solid 3px $sky-blue;
+      padding-left: 27px;
+      opacity: 1;
+    }
+  }
+
+
+}

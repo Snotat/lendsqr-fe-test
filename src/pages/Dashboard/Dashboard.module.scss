@@ -3,12 +3,18 @@
 .navbar{
     width: 100%;
     display: flex;
-height: 100px;
+    position: absolute;
+top: 0;
+left: 0;
+right: 0;
+    height: 100px;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     font-size: 16px;
-     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    background:#fff;
+z-index: 10;
+     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
      
           font-family: "Work Sans", sans-serif;
   font-style: normal;
@@ -20,7 +26,7 @@ display: flex;
 flex-direction: row;
 align-items: flex-start;
 justify-content: flex-start;
-margin-left: 30px;
+padding-left: 30px;
 gap: 10px;
      img{
         height: 30px;
@@ -34,12 +40,12 @@ img{
     
 }
 .navbar_right{
-    width: 100%;
+    width: calc(100% - 283px);
     display: flex;
     align-items: center;
     flex-direction:row;
     justify-content: space-between;
-    margin: 0 40px;
+    padding: 0 40px;
 .nav_input{
     width: fit-content;
     display: flex;
@@ -108,4 +114,10 @@ border: 0;
     }
 }
 }
+}
+
+
+.dashboard{
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.01);
 }
