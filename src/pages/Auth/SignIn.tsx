@@ -30,7 +30,7 @@ setShowPassword(!showPassword)
 }
 const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
-
+signIn()
 }
   return (
  <div className={styles.signin}>
@@ -44,6 +44,10 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         </div>
       </div>
       <div className={styles.signin_right}>
+          <div className={styles.signin_logo} >
+        <img src={logo} alt="" />
+        <img src={lendsqrlogo} alt="" />
+       </div > 
   <form id='signin' onSubmit={handleSubmit} className={styles.signin_form}>
   <div className={styles.signin_header}>Welcome!</div>
   <p>Enter details to login.</p>

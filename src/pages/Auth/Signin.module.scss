@@ -17,7 +17,7 @@ $color2: #39cdcc;
   align-items: center;
   background-color: #fff;
   height: 100vh;
-  min-height: 500px;
+  min-height: 550px;
   font-family:$font-family,'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   .signin_left {
   width: 51%;
@@ -25,13 +25,16 @@ $color2: #39cdcc;
   display: flex;
   align-items: center;
   margin: auto;
-  padding: 0px 97px;
+  padding: 0px 6.5%;
   background-color: rgba(0, 0, 0, 0.01);
   position: relative;
+   @media (max-width: 768px) {
+    display: none;
+  }
     .signin_logo {
 position: absolute;
-top: 106px;
-left: 97px;
+top: 11.8%;
+left: 13%;
       gap: 5px;
       display: flex;
       flex-direction: row;
@@ -68,7 +71,30 @@ left: 97px;
     align-items: center;
     height: 100%;
     width: 49%;
-   padding: 0 100px;
+   padding: 0 7%; 
+   position: relative;
+    .signin_logo {
+position: absolute;
+top: 5%;
+left: 7%;
+      gap: 5px;
+      display: flex;
+      flex-direction: row;
+      align-items:center;
+      justify-content: start;
+      flex-wrap: nowrap;
+ @media (min-width: 768px) {
+    display: none;
+  }
+     img{
+        height: 35px;
+        width: fit-content;
+
+     }
+    }
+   @media (max-width: 768px) {
+    width: 100%;
+  }
 .signin_form {
   width: 100%;
   .signin_header {
@@ -77,6 +103,7 @@ left: 97px;
     color: #213f7d;
     font-family: $font-family-bold,;
 margin-bottom: 10px;
+
   }
   .signin_desc {
     color: #545F7D;
@@ -169,5 +196,5 @@ margin-top: 30px;
     }
   }
 }
-
+ 
   }
