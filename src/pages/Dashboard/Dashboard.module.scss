@@ -3,7 +3,7 @@
 .navbar{
     width: 100%;
     display: flex;
-    position: absolute;
+    position: fixed;
 top: 0;
 left: 0;
 right: 0;
@@ -96,8 +96,9 @@ border: 0;
         font-family:  Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
     img{
-        width: 25px;
-        height: 25px;
+        width: 19.68px;
+        height: 22.75px;
+        color:  #213F7D;
     }
     .nav_user{
         width: fit-content;
@@ -119,5 +120,5 @@ border: 0;
 
 .dashboard{
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.01);
+  background-color: #f8f8f8;
 }

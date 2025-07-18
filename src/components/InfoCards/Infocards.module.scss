@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+$sky-blue: #39CDCC;
+$text-colour: #213f7d;
+$light-text-collor: #545f7d;
+.infocards { 
+  font-family: 'Inter', sans-serif; 
+margin-top: 100px;
+margin-left: 283px;
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
+.title {
+  font-size: 24px; 
+  font-weight: 500; 
+  color: #213F7D; 
+  padding: 60px; 
+  padding-bottom: 0;
+    @media (max-width: 768px) {
+    padding: 16px;
+    padding-bottom: 0;
+  }
+}
+.plates {
+  display: flex;
+  align-items: flex-start;
+  justify-content: start;
+  flex-direction: row;
+gap: 26px;
+
+  padding: 60px; 
+  padding-top: 40px;
+  padding-bottom: 20px;
+overflow-x: auto;
+scrollbar-width: none; 
+  @media (max-width: 768px) {
+   gap: 10px; 
+  padding: 16px; 
+  padding-top: 10px;
+  padding-bottom: 12px;
+  }
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none; 
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+
+  &:hover {
+    scrollbar-width: thin; 
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      transition: background-color 0.2s ease;
+    }}
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(4, 1fr); 
+  }
+}
+
+.plate {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.05);
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+aspect-ratio: 3/2;
+width: 240px;
+height: 160px;
+  &:hover {
+   transform: translateY(-4px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+.icon {
+  width: fit-content;
+  height: fit-content;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #545F7D;
+  margin-bottom: 8px;
+}
+
+.number {
+  font-size: 24px;
+  font-weight: 600;
+  color:  #213F7D;
+}
+  img {
+  width: 40px;
+  height:40px;
+}
+}
+
+
+
+
+
+

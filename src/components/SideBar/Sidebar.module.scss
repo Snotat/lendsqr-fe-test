@@ -3,30 +3,31 @@ $sky-blue: #39CDCC;
 $text-colour: #213f7d;
 $light-text-collor: #545f7d;
 
-.container {
+.side_container {
   width: 283px;
   height:100%;
   background: #fff;
 box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
 font-size: 16px;
 font-weight: 400;
-
+height: 100%;
           font-family: "Work Sans", sans-serif;
 margin-top: 100px;
-position: absolute;
+position: fixed;
 left: 0;
 bottom: 0;
-  @media screen and (max-width: 1000px) {
+top: 0;
+  @media screen and (max-width: 768px) {
     display: none;
   }
 
   .sidebar {
     height: calc(100% - 100px);
     overflow: auto;
-    margin-top: 100px;
    
 scrollbar-width: none; 
   -ms-overflow-style: none; 
+  
   &::-webkit-scrollbar {
     width: 0;
   }
@@ -64,11 +65,11 @@ scrollbar-width: none;
       gap: 10px;
       margin-bottom: 42px;
       padding: 39px 10px 0 30px;
-      text {
+      .text {
         color: $text-colour;
         margin: 0;
       }
-          icon {
+          .icon {
         color: $text-colour;
         width: 20px;
 
@@ -99,9 +100,10 @@ color: $text-colour;
       }
 
     
-img{
+.img{
+  width: '100px';
 }
-      text {
+      .text {
         color: $text-colour;
       }
   

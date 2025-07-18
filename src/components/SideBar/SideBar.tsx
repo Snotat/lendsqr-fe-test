@@ -24,7 +24,7 @@ const SideBar: React.FC = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.side_container}>
       <aside className={styles.sidebar}> 
         <div className={styles.switch}>
           <img src={switch_org_icon} alt="Switch Organization" className={styles.switchIcon} />

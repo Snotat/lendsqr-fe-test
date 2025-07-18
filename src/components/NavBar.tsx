@@ -6,6 +6,7 @@ import Bell from '../assets/icons/bell.png'
 import ProfilePicture from '../assets/images/profile_picture.png'
 import { IoIosSearch } from "react-icons/io";
 import { FaCaretDown } from 'react-icons/fa';
+import bell from '../assets/images/bell.png'
 
 type Props = {}
 
@@ -24,7 +25,7 @@ function NavBar({}: Props) {
         <div className={styles.nav_input_right}>
            
             <Link state={{padding:"0 20px"}} to='/'>Docs</Link>
-            <img src={Bell} alt=""/>
+            <img src={bell} alt=""/>
             <div className={styles.nav_user}>
             <img src={ProfilePicture} alt="" />
 <span>Adedeji</span>
