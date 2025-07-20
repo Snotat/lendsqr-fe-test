@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 $sky-blue: #39CDCC;
 $text-colour: #213f7d;
 $light-text-collor: #545f7d;
@@ -6,7 +8,7 @@ $light-text-collor: #545f7d;
   padding: 30px 0px;
   padding-right: 0;
   background-color: #f8f8f8;
-  font-family: 'Inter', sans-serif;
+  font-family: "Work Sans", sans-serif;
   color: $light-text-collor;
   
 margin-left: 283px;
@@ -22,10 +24,12 @@ margin-left: 283px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   border-radius: 8px;
+  height: 640px;
+  min-height: 400;
   max-height: calc(100vh - 120px);
   overflow-y: auto;
   overflow-x: auto;
-scrollbar-width: none; 
+scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none; 
   &::-webkit-scrollbar {
@@ -48,7 +52,7 @@ scrollbar-width: none;
       border-radius: 10px;
       transition: background-color 0.2s ease;
     }}
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     display: none;
   }
 }
@@ -64,11 +68,13 @@ scrollbar-width: none;
   margin: 0 60px;
   margin-bottom: 10px;
   padding: 30px;
+  padding-bottom: 10px;
+  padding-top: 0;
   border-radius: 4px;
   th, td {
     text-align: left;
     border-bottom: 1px solid rgba(84, 95, 125, 0.14);
-    height: 50px;
+    height: 63px;
     width: fit-content;
     overflow: hidden;
 text-overflow: ellipsis;
@@ -76,9 +82,7 @@ whiteSpace: nowrap;
 max-width: fit-content;
     padding-right:20px;
   }
-th{
-border-bottom: none;
-}
+ 
   th {
     background-color: white;
     font-size: 12px;
@@ -90,6 +94,11 @@ border-bottom: none;
     top: 0;
     z-index: 5;
     font-size: 12px;
+    padding-top: 10px;
+border-bottom: none;
+height: 59px;
+align-items: end;
+padding-top: 20px;
   }
 
   thead tr:first-child th:first-child {
@@ -178,12 +187,18 @@ border-bottom: none;
   font-size: 1.5rem;
   cursor: pointer;
   color: #545F7D;
-  padding: 4px;
-  border-radius: 4px;
+  align-items: center;
+  border-radius: 20px;
   transition: background-color 0.2s ease;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 0;
+.more_options_menu_icon{
+  color: $light-text-collor;
+}
   &:hover {
-    background-color: #eee;
+    background-color: #d1d1d1;
   }
 }
 
@@ -260,17 +275,19 @@ border-bottom: none;
     width: 100%;
     max-width: 1040px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   margin-top: 10px;
   padding: 0;
   border-radius: 8px;
 
+
+
 }
 
 .drop_pages {
-    width: 100%;
+    width: fit-content;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -312,7 +329,7 @@ z-index: 1;
   cursor: pointer;
   appearance: none;
   z-index: 2;
-  background-color: rgba(0, 0, 195, 0.1);
+  background-color: rgba(33, 63, 125, 0.1);
   background-repeat: no-repeat;
   background-position: right 8px center;
   background-size: 12px;

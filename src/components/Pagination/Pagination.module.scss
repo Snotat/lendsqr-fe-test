@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+.paginationContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; 
+  font-family: "Work Sans", sans-serif;
+  .pageButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px; 
+    height: 24px;
+    border-radius: 4px; 
+    border: 0;
+    outline: 0;
+    background-color: rgba(33, 63, 125, 0.1);
+    color: #213F7D;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+   .pagination_button{
+    height: 14px;
+   }
+
+    &.active {
+    color: #545F7D; 
+      font-weight: 500;
+    }
+
+    &.arrowButton {
+      background-color: #e6e8eb;
+      color: #213F7D;
+      font-size: 16px;
+opacity: 0.6;
+  &:hover {
+      opacity: 1;
+    }
+    }
+
+    &.dots {
+      background-color: transparent;
+      cursor: default;
+      color: #545F7D;
+    }
+  }
+  .pageNumbers{
+    display: flex;
+    flex-direction: row;
+    color: #545F7D;
+  }
+  .pageNumbers .pageButton{
+color: #545F7D;
+ background-color: #f0f2f500;
+ opacity: 0.6;
+  &:hover {
+      opacity: 1;
+    }
+    &:active{
+      opacity: 1;
+      font-weight: 800;
+    }
+  }
+}

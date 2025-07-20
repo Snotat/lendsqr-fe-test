@@ -19,6 +19,15 @@ z-index: 10;
           font-family: "Work Sans", sans-serif;
   font-style: normal;
   font-weight: 400;
+@media (max-width: 768px){
+width: 100%;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+padding: 16px;
+}
+
   .navbar_logo {
 width: 283px;
 height: fit-content;
@@ -28,6 +37,11 @@ align-items: flex-start;
 justify-content: flex-start;
 padding-left: 30px;
 gap: 10px;
+@media (max-width:768px){
+    
+padding-left: 0px;
+}
+
      img{
         height: 30px;
         width: fit-content;
@@ -36,9 +50,23 @@ gap: 10px;
 
 }
 img{
-    width: 35px;
+    width: 34px;
+    
     
 }
+
+.menu_icon{
+    color: #213F7D;
+    display:none;
+    width: 30px;
+    height: 30px;
+    @media (max-width: 768px) {
+
+    display: block;
+  }
+}
+
+
 .navbar_right{
     width: calc(100% - 283px);
     display: flex;
@@ -46,6 +74,10 @@ img{
     flex-direction:row;
     justify-content: space-between;
     padding: 0 40px;
+    @media (max-width: 768px) {
+ 
+    display: none;
+ }
 .nav_input{
     width: fit-content;
     display: flex;
@@ -60,6 +92,7 @@ img{
 border-bottom-left-radius: 5px;
 outline: 0;
 padding: 0 20px ;
+padding-right: 5px;
 &:focus{
     outline: 0;
     border: 1px solid #39cdcc;
@@ -114,11 +147,12 @@ border: 0;
         }
     }
 }
+
 }
 }
 
 
 .dashboard{
-  height: 100vh;
+  height: fit-content;
   background-color: #f8f8f8;
 }

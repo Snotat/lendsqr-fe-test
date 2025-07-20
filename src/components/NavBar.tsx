@@ -7,16 +7,22 @@ import ProfilePicture from '../assets/images/profile_picture.png'
 import { IoIosSearch } from "react-icons/io";
 import { FaCaretDown } from 'react-icons/fa';
 import bell from '../assets/images/bell.png'
+import { AiOutlineMenu } from "react-icons/ai";
+import { MdOutlineCancelPresentation } from "react-icons/md";
 
-type Props = {}
+type Props = {
+  openSidebar:()=>void,
+  sidebar:boolean
+}
 
-function NavBar({}: Props) {
+function NavBar({openSidebar, sidebar}: Props) {
   return (
     <div className={styles.navbar}>
         <div className={styles.navbar_logo} >
         <img src={logo}  style={{height:'23px', width:'23px'}}  alt="" />
         <img src={lendsqrlogo} alt="" />
-       </div > 
+       </div >
+       { sidebar?<MdOutlineCancelPresentation  onClick={openSidebar} className={styles.menu_icon} /> :<AiOutlineMenu onClick={openSidebar} className={styles.menu_icon} />}
        <div className={styles.navbar_right}>
         <div className={styles.nav_input}>
             <input type="text" placeholder='Search for anything'  />

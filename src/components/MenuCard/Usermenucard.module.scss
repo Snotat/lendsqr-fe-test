@@ -1,0 +1,31 @@
+
+$sky-blue: #39CDCC;
+$text-colour: #213f7d;
+$light-text-collor: #545f7d;
+
+.user_menu_card{
+   min-width: 180px;
+   min-height: 130px;
+   font-size: 14px;
+   font-weight: 500;
+   gap: 10px;
+   display: flex;
+   align-items: flex-start;
+   justify-content:flex-start;
+   flex-direction: column;
+   padding: 20px;
+   color: $light-text-collor;
+   background:#000000;
+   border-radius: 4px;
+  
+    gap: 20px;
+    span{
+        display: flex;
+        gap: 10px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
+    }
+   img{
+   }
+}

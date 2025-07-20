@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Infocards.module.scss'; 
 import icon1 from '../../assets/icons/icon1.png'
 import icon2 from '../../assets/icons/icon2.png'
 import icon3 from '../../assets/icons/icon3.png'
 import icon4 from '../../assets/icons/icon4.png'
-
+import usersDataJson from '../../utils/mockUser.json'
 
 interface StatCardProps {
   icon: string; 
@@ -12,6 +12,52 @@ interface StatCardProps {
   value: number;
 }
 
+interface PersonalInformation {
+  fullName: string;
+  phoneNumber: string;
+  id: string;
+  emailAddress: string;
+  bvn: string;
+  gender: string;
+  maritalStatus: string;
+  children: string;
+  typeOfResidence: string;
+  userAddress: string;
+}
+
+interface EducationAndEmployment {
+  levelOfEducation: string;
+  employmentStatus: string;
+  sectorOfEmployment: string;
+  durationOfEmployment: string;
+  officeEmail: string;
+  organizationName:string;
+  monthlyIncome: string;
+  savings:string
+  loanRepayment: string;
+}
+interface Socials {
+  twitter: string;
+  facebook: string;
+  instagram: string;
+}
+interface Guarantor {
+  fullName: string;
+  phoneNumber: string;
+  emailAddress: string;
+  relationship: string;
+}
+interface UserDetails {
+  userStatus: string;
+  dateJoined: string;
+}
+interface UserType {
+  personalInformation: PersonalInformation;
+  educationAndEmployment: EducationAndEmployment;
+  socials: Socials;
+  guarantor: Guarantor[];
+  userDetails: UserDetails;
+}
 const InfoPlate: React.FC<StatCardProps> = ({ icon, label, value}) => {
   return (
     <div className={styles.plate}>
@@ -48,17 +94,81 @@ const InfoCards: React.FC = () => {
       value: 102453,
     },
   ];
-
+  interface CardDataTypes{
+totalUsers:number,
+activeUsers:number,
+loaningUsers:number,
+savingUsers:number
+  }
+const [cardData, setCardData] = useState<StatCardProps[]>([
+    {
+      icon:icon1,
+      label: 'USERS',
+      value: 0,
+    },
+    {
+      icon: icon2,
+      label: 'ACTIVE USERS',
+      value: 0,
+    },
+    {
+      icon: icon3,
+      label: 'USERS WITH LOANS',
+      value: 0,
+    },
+    {
+      icon: icon4,
+      label: 'USERS WITH SAVINGS',
+      value: 0,
+    },
+  ])
+const [usersData, setUsersData] = useState<UserType[] | undefined>(usersDataJson||[])
+useEffect(()=>{
+usersDataJson && setUsersData(usersDataJson)
+let activeUsers= usersData?.filter(user=>{
+  return user.userDetails.userStatus === 'Active'
+})
+let loaningUser = usersData?.filter(user=>{
+  return user.educationAndEmployment.loanRepayment!=='N0'
+})
+let savingUser = usersData?.filter(user=>{
+  return user.educationAndEmployment.savings!=='N0'
+})
+usersData &&console.log('usershhh', usersData?.[0], 'activeUsers',activeUsers?.[0], activeUsers?.length, activeUsers?.[0], "loaningUser", loaningUser?.[0], loaningUser?.length, 'saving users', savingUser?.length, savingUser?.[0])
+ setCardData([
+     {
+      icon:icon1,
+      label: 'USERS',
+      value: usersData?.length||0,
+    },
+    {
+      icon: icon2,
+      label: 'ACTIVE USERS',
+      value: activeUsers?.length ||0,
+    },
+    {
+      icon: icon3,
+      label: 'USERS WITH LOANS',
+      value: loaningUser?.length||0,
+    },
+    {
+      icon: icon4,
+      label: 'USERS WITH SAVINGS',
+      value: savingUser?.length||0,
+    },
+ ])
+},[])
   return (
     <div className={styles.infocards}>
       <h2 className={styles.title}>Users</h2>
       <div className={styles.plates}>
-        {infoData.map((data, index) => (
+        {cardData.map((data, index) => (
           <InfoPlate
             key={index}
             icon={data.icon}
             label={data.label}
             value={data.value}
+
           />
         ))}
       </div>
