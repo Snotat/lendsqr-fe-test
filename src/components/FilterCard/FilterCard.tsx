@@ -1,10 +1,11 @@
 'use client';
 
-import React, { useState, FormEvent, useEffect } from 'react';
+import React, { useState, FormEvent, useEffect, useMemo } from 'react';
 import styles from './filtercard.module.scss'; 
 import calendar from '../../assets/icons/calendar.png'
-import { GoChevronDown } from "react-icons/go";
-import usersData from '../../utils/mockUser.json'
+import { GoChevronDown, GoOrganization } from "react-icons/go";
+import { UserType } from '../../types/UserTypes';
+import { getUsers } from '../../API/getUsers';
 interface FilterFormState {
   organization: string;
   username: string;
@@ -13,75 +14,16 @@ interface FilterFormState {
   phoneNumber: string;
   status: string;
 }
-interface UserFilterFormProps {
-  onFilter: (filters: FilterFormState) => void; 
-  onReset: () => void;
-}
-interface PersonalInformation {
-  fullName: string;
-  phoneNumber: string;
-  id: string;
-  emailAddress: string;
-  bvn: string;
-  gender: string;
-  maritalStatus: string;
-  children: string;
-  typeOfResidence: string;
-  userAddress: string;
-}
 
-interface EducationAndEmployment {
-  levelOfEducation: string;
-  employmentStatus: string;
-  sectorOfEmployment: string;
-  durationOfEmployment: string;
-  officeEmail: string;
-  organizationName:string;
-  monthlyIncome: string;
-  savings:string
-  loanRepayment: string;
-}
-interface Socials {
-  twitter: string;
-  facebook: string;
-  instagram: string;
-}
-interface Guarantor {
-  fullName: string;
-  phoneNumber: string;
-  emailAddress: string;
-  relationship: string;
-}
-interface UserDetails {
-  userStatus: string;
-  dateJoined: string;
-}
-interface UserType {
-  personalInformation: PersonalInformation;
-  educationAndEmployment: EducationAndEmployment;
-  socials: Socials;
-  guarantor: Guarantor[];
-  userDetails: UserDetails;
-}
-
-interface FilterProp {
-  organization?:string,
-  username?:string,
-  email?:string,
-  date?:string,
-  phone?: string,
-  status?:string
-  
-}
 
 
 interface FilterCardProp{
   allUser:UserType[],
-onFilterChange:(filteredUsers: UserType[]) => void;
+onFilterChange:(filteredUsers: UserType[]) => void,
+onOpenFilter:(x:boolean)=>void
 }
-const FilterCard: React.FC<FilterCardProp>= ({allUser,onFilterChange})=> {
+const FilterCard: React.FC<FilterCardProp>= ({allUser,onFilterChange, onOpenFilter})=> {
 
-const [FilteredData, setFilteredData] = useState()
   const [filters, setFilters] = useState<FilterFormState>({
     organization: '',
     username: '',
@@ -92,15 +34,99 @@ const [FilteredData, setFilteredData] = useState()
   });
 
 
-  const [filterOrganization, setFilterOrganization] =useState<UserType>()
-  const [filterUsername, setUsername] =useState<UserType>()
-  const [filterEmail, setEmail] =useState<UserType>()
-  const [filterDate, setDate] =useState<UserType>()
-  const [filterStatus, setFilterStatus] =useState<UserType>()
-  const [totalFilter, setTotalFilter] = useState<UserType>()
-  useEffect(()=>{
+
+const formatDate= (dateString: string): string => {
+  if (!dateString) {
+    return ""; 
+  }
+
+  let date: Date;
+  try {
+    date = new Date(dateString);
+    if (isNaN(date.getTime())) {
+      const parts = dateString.split('-');
+      if (parts.length === 3) {
+        const year = parseInt(parts[0], 10);
+        const month = parseInt(parts[1], 10) - 1;
+        const day = parseInt(parts[2], 10);
+        date = new Date(year, month, day);
+      } else {
+        return "";
+      }
+    }
+  } catch (error) {
+    console.error(`Error parsing date string "${dateString}":`, error);
+    return "";
+  }
+  if (isNaN(date.getTime())) {
+    return "";
+  }const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const day = date.getDate().toString().padStart(2, '0'); 
+  return `${year}-${month}-${day}`;
+};
+const [userData, setUserData]= useState<UserType|any>()
+  useEffect(() => {
+    const fetchAndSetUsers = async () => {
+   
+      try {
+        const users = await getUsers();
+        setUserData(users);
+      } catch (err: any) {
+        console.error('Failed to fetch users in MainDash:', err);
+      }
+    };
+
+    fetchAndSetUsers();
+  }, [onOpenFilter]);
+const currentFilteredData = useMemo(() => {
+let tempFilteredUsers:any[] =userData
+  if (filters.organization) {
     
-  },[])
+  console.log('organizationssss', filters.organization,tempFilteredUsers)
+    tempFilteredUsers = tempFilteredUsers?.filter(data =>
+      data.educationAndEmployment.organizationName.toLowerCase() ===filters.organization.toLowerCase()
+    );
+  }
+
+  if (filters.username) {
+    console.log('name', filters.username,tempFilteredUsers)
+    tempFilteredUsers = tempFilteredUsers.filter(data =>
+      data.personalInformation.fullName.toLowerCase().includes(filters.username.toLowerCase())
+    );
+  }
+  if (filters.date) {
+    console.log('date',filters.date,tempFilteredUsers)
+    const filterDateFormatted = formatDate(filters.date);
+    tempFilteredUsers = tempFilteredUsers.filter(data =>
+      formatDate(data.userDetails.dateJoined) === filterDateFormatted
+    );
+  }
+
+  if (filters.email) {
+    console.log('email', filters.email,tempFilteredUsers)
+    tempFilteredUsers = tempFilteredUsers.filter(data =>
+      data.personalInformation.emailAddress.toLowerCase().includes(filters.email.toLowerCase())
+    );
+  }
+
+  if (filters.phoneNumber) {
+    console.log('phone', filters.phoneNumber,tempFilteredUsers)
+    tempFilteredUsers = tempFilteredUsers.filter(data =>
+      data.personalInformation.phoneNumber.includes(filters.phoneNumber)
+    );
+  }
+
+  if (filters.status) { 
+    console.log('status', filters.status,tempFilteredUsers )
+    tempFilteredUsers = tempFilteredUsers.filter(data =>
+      data.userDetails.userStatus.toLowerCase() === filters.status.toLowerCase()
+    );
+  }
+  console.log('tempFilteredUsers', tempFilteredUsers)
+  return tempFilteredUsers;
+
+}, [allUser, filters]); 
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -112,7 +138,9 @@ const [FilteredData, setFilteredData] = useState()
 
   const handleFilterSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log('Applying filters:', filters);
+  onFilterChange(currentFilteredData);
+    onOpenFilter(false);
+    
   };
 
   const handleReset = () => {
@@ -125,6 +153,15 @@ const [FilteredData, setFilteredData] = useState()
       status: '',
     };
     setFilters(initialFilters);
+    onOpenFilter(false);
+    setFilters({
+    organization: '',
+    username: '',
+    email: '',
+    date: '',
+    phoneNumber: '',
+    status: '',
+  })
   };
 
   return (
@@ -161,7 +198,6 @@ const [FilteredData, setFilteredData] = useState()
             className={styles.input}
           />
         </div>
-
         <div className={styles.formGroup}>
           <label htmlFor="email" className={styles.label}>Email</label>
           <input
@@ -202,7 +238,6 @@ const [FilteredData, setFilteredData] = useState()
             className={styles.input}
           />
         </div>
-
         <div className={styles.formGroup}>
           <label htmlFor="status" className={styles.label}>Status</label>
           <div className={styles.selectWrapper}>

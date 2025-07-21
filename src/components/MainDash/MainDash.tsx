@@ -7,9 +7,12 @@ import { FiChevronDown } from 'react-icons/fi';
 import Pagination from '../Pagination/Pagination';
 import usersDataJson from '../../utils/mockUser.json'
 import UserMenuCard from '../MenuCard/UserMenuCard';
-import UserMenuCardPortal from '../../UserMenuCardPortal';
 import FilterCard from '../FilterCard/FilterCard';
 import { HiOutlineDotsVertical } from "react-icons/hi";
+import { UserType } from '../../types/UserTypes';
+import axios from 'axios';
+import { getUsers } from '../../API/getUsers';
+import { Spinner } from '../Spinner/Spinner';
 interface User {
   id: string;
   organization: string;
@@ -21,75 +24,6 @@ interface User {
 }
 
 
-const mockUsers: User[] = [
-  { id: '1', organization: 'Lendsqr', user: 'Olawale', email: 'snotatonline@outlook.com', phoneNumber: '09129285031', date: 'July 18, 2025 10:00 AM', status: 'Inactive' },
-  { id: '2', organization: 'Lendsqr', user: 'Ola', email: 'snotatonline@outlook.com', phoneNumber: '09129285031', date: 'July 18, 2025 10:00 AM', status: 'Pending' },
-  { id: '3', organization: 'Lendsqr', user: 'Wale', email: 'snotatonline@outlook.com', phoneNumber: '09129285031', date: 'July 18, 2025 10:00 AM', status: 'Blacklisted' },
-  { id: '4', organization: 'Lendsqr', user: 'lawale', email: 'snotatonline@outlook.com', phoneNumber: '09129285031', date: 'July 18, 2025 10:00 AM', status: 'Active' },
-  { id: '5', organization: 'Lendsqr', user: 'Olawale', email: 'snotatonline@outlook.com', phoneNumber: '09129285031', date: 'July 18, 2025 10:00 AM', status: 'Inactive' },
-  { id: '6', organization: 'Lendsqr', user: 'Ola', email: 'snotatonline@outlook.com', phoneNumber: '09129285031', date: 'July 18, 2025 10:00 AM', status: 'Pending' },
-  { id: '7', organization: 'Lendsqr', user: 'Wale', email: 'snotatonline@outlook.com', phoneNumber: '09129285031', date: 'July 18, 2025 10:00 AM', status: 'Blacklisted' },
-  { id: '8', organization: 'Lendsqr', user: 'lawale', email: 'snotatonline@outlook.com', phoneNumber: '09129285031', date: 'July 18, 2025 10:00 AM', status: 'Active' },
-  { id: '9', organization: 'Lendsqr', user: 'Olawale', email: 'snotatonline@outlook.com', phoneNumber: '09129285031', date: 'July 18, 2025 10:00 AM', status: 'Inactive' },
-  { id: '10', organization: 'Lendsqr', user: 'Ola', email: 'snotatonline@outlook.com', phoneNumber: '09129285031', date: 'July 18, 2025 10:00 AM', status: 'Pending' },
-  { id: '11', organization: 'Lendsqr', user: 'Wale', email: 'snotatonline@outlook.com', phoneNumber: '09129285031', date: 'July 18, 2025 10:00 AM', status: 'Blacklisted' },
-  { id: '12', organization: 'Lendsqr', user: 'lawale', email: 'snotatonline@outlook.com', phoneNumber: '09129285031', date: 'July 18, 2025 10:00 AM', status: 'Active' },
-  { id: '13', organization: 'Lendsqr', user: 'Olawale', email: 'snotatonline@outlook.com', phoneNumber: '09129285031', date: 'July 18, 2025 10:00 AM', status: 'Inactive' },
-  { id: '14', organization: 'Lendsqr', user: 'Ola', email: 'snotatonline@outlook.com', phoneNumber: '09129285031', date: 'July 18, 2025 10:00 AM', status: 'Pending' },
-  { id: '15', organization: 'Lendsqr', user: 'Wale', email: 'snotatonline@outlook.com', phoneNumber: '09129285031', date: 'July 18, 2025 10:00 AM', status: 'Blacklisted' },
-  { id: '16', organization: 'Lendsqr', user: 'lawale', email: 'snotatonline@outlook.com', phoneNumber: '09129285031', date: 'July 18, 2025 10:00 AM', status: 'Active' },
-  { id: '17', organization: 'Lendsqr', user: 'Olawale', email: 'snotatonline@outlook.com', phoneNumber: '09129285031', date: 'July 18, 2025 10:00 AM', status: 'Inactive' },
-  { id: '18', organization: 'Lendsqr', user: 'Ola', email: 'snotatonline@outlook.com', phoneNumber: '09129285031', date: 'July 18, 2025 10:00 AM', status: 'Pending' },
-  { id: '19', organization: 'Lendsqr', user: 'Wale', email: 'snotatonline@outlook.com', phoneNumber: '09129285031', date: 'July 18, 2025 10:00 AM', status: 'Blacklisted' },
-  { id: '20', organization: 'Lendsqr', user: 'lawale', email: 'snotatonline@outlook.com', phoneNumber: '09129285031', date: 'July 18, 2025 10:00 AM', status: 'Active' },
-
-];
-interface PersonalInformation {
-  fullName: string;
-  phoneNumber: string;
-  id: string;
-  emailAddress: string;
-  bvn: string;
-  gender: string;
-  maritalStatus: string;
-  children: string;
-  typeOfResidence: string;
-  userAddress: string;
-}
-
-interface EducationAndEmployment {
-  levelOfEducation: string;
-  employmentStatus: string;
-  sectorOfEmployment: string;
-  durationOfEmployment: string;
-  officeEmail: string;
-  organizationName:string;
-  monthlyIncome: string;
-  savings:string
-  loanRepayment: string;
-}
-interface Socials {
-  twitter: string;
-  facebook: string;
-  instagram: string;
-}
-interface Guarantor {
-  fullName: string;
-  phoneNumber: string;
-  emailAddress: string;
-  relationship: string;
-}
-interface UserDetails {
-  userStatus: string;
-  dateJoined: string;
-}
-interface UserType {
-  personalInformation: PersonalInformation;
-  educationAndEmployment: EducationAndEmployment;
-  socials: Socials;
-  guarantor: Guarantor[];
-  userDetails: UserDetails;
-}
 const getstatus_badgeClass = (status: string) => {
   switch (status) {
     case 'Active':
@@ -105,12 +39,15 @@ const getstatus_badgeClass = (status: string) => {
   }
 };
 const MainDash: React.FC = () => {
-  const menuButtonRefs = useRef<{ [key: string]: HTMLButtonElement }>({})
-  const [openMenuId, setOpenMenuId]=useState<string|null>('')
-   const handleToggleMenu = (userId: string) => {
-    setOpenMenuId(openMenuId === userId ? null : userId);
+
+const [userIndex, setUserIndex] = useState<number|null>(null)
+const [userId, setUserId] = useState<string|null>(null)
+   const handleToggleMenu = (index: number, id:string) => {
+   userIndex === index?setUserIndex(null):setUserIndex(index)
+   setUserId(id)
+   console.log('index, id, userId', index, id, userIndex)
   };
-const [usersData, setUsersData] = useState<UserType[] | undefined>(usersDataJson||[]) 
+const [usersData, setUsersData] = useState<UserType[] | undefined>() 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const indexOfLast = currentPage * itemsPerPage;
@@ -119,10 +56,10 @@ const [usersData, setUsersData] = useState<UserType[] | undefined>(usersDataJson
 const onPageChange =(x:number)=>{
 setCurrentPage(x)
 }
-useEffect(()=>{
-usersDataJson && setUsersData(usersDataJson)
-usersData && console.log('user data length',usersData?.length)
-},[])
+// useEffect(()=>{
+// usersDataJson && setUsersData(usersDataJson)
+// usersData && console.log('user data length',usersData?.length)
+// },[])
   const handleItemsPerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setItemsPerPage(Number(e.target.value));
     setCurrentPage(1);
@@ -130,35 +67,63 @@ usersData && console.log('user data length',usersData?.length)
 
 
 const [selected, setSelected] = useState('')
-const [handleFilter,setHandleFilter] = useState('')
+const [openFilter,setOpenFilter] = useState(false)
 
-const handleFilterChange =(x:UserType[])=>{
-
+const handleFilterChange =(filteredUsers:UserType[])=>{
+console.log('open filter change', filteredUsers)
+setUsersData(filteredUsers)
 }
+const [loading, setLoading] = useState(true)
+const [error, setError] = useState(false)
+  useEffect(() => {
+    const fetchAndSetUsers = async () => {
+      setLoading(true);
+      setError(false);
+      try {
+        const users = await getUsers();
+        setUsersData(users);
+      } catch (err: any) {
+        setError(err.message || 'Failed to load users.');
+        console.error('Failed to fetch users in MainDash:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  return (
+    fetchAndSetUsers();
+  }, []);
+if(loading){
+  return <div style={{height:'100vh'}}><Spinner/></div>
+}
+if(error){
+  return <h2>An error occured please refresh!</h2>
+}
+return (
     <div style={{position:'relative', paddingBottom:'250px'}}  className={styles.main_dash}>
-          <FilterCard allUser={usersData||[]} onFilterChange={handleFilterChange}  />
+         {openFilter&& <FilterCard onOpenFilter={()=>setOpenFilter(false)} allUser={usersData||[]} onFilterChange={handleFilterChange}  />}
         <div className={styles.table_wrapper_out}></div>
       <div className={styles.table_wrapper}>
-        <table className={styles.table}>
+        <table style={{position:'relative'}} className={styles.table}>
+                  
+        {userIndex && <UserMenuCard index={(itemsPerPage*currentPage)-userIndex}  id={userId||null} />}  
           <thead>
             <tr>
-              <th>ORGANIZATION <span className={styles.sort_icon}><img src={dropDownIcon} alt="" /></span></th>
-              <th>USER <span className={styles.sort_icon}><img src={dropDownIcon} alt="" /></span></th>
-              <th>EMAIL <span className={styles.sort_icon}><img src={dropDownIcon} alt="" /></span></th>
-              <th>PHONE NUMBER <span className={styles.sort_icon}><img src={dropDownIcon} alt="" /></span></th>
-              <th>DATE JOINED <span className={styles.sort_icon}><img src={dropDownIcon} alt="" /></span></th>
-              <th>STATUS <span className={styles.sort_icon}><img src={dropDownIcon} alt="" /></span></th>
+              <th>ORGANIZATION <span onClick={()=>setOpenFilter(!openFilter)} className={styles.sort_icon}><img src={dropDownIcon} alt="" /></span></th>
+              <th>USER <span onClick={()=>setOpenFilter(!openFilter)} className={styles.sort_icon}><img src={dropDownIcon} alt="" /></span></th>
+              <th>EMAIL <span onClick={()=>setOpenFilter(!openFilter)} className={styles.sort_icon}><img src={dropDownIcon} alt="" /></span></th>
+              <th>PHONE NUMBER <span onClick={()=>setOpenFilter(!openFilter)} className={styles.sort_icon}><img src={dropDownIcon} alt="" /></span></th>
+              <th>DATE JOINED <span onClick={()=>setOpenFilter(!openFilter)} className={styles.sort_icon}><img src={dropDownIcon} alt="" /></span></th>
+              <th>STATUS <span onClick={()=>setOpenFilter(!openFilter)}  className={styles.sort_icon}><img src={dropDownIcon} alt="" /></span></th>
               <th></th> 
             </tr>
           </thead>
           <tbody>
-            {currentUsers?.map((user) => (
+            {currentUsers?.map((user, index) => (
               <tr onClick={()=>setSelected(user.personalInformation.id)} key={user.personalInformation.id}
-              style={{backgroundColor:selected===user.personalInformation.id?"#f5f5f5":''}}
-              >
-                <td>{user.educationAndEmployment.organizationName}</td>
+              style={{backgroundColor:selected===user.personalInformation.id?"#f5f5f5":'', position:'relative'}}
+            
+            >
+        <td>{user.educationAndEmployment.organizationName}</td>
                 <td>{user.personalInformation.fullName}</td>
                 <td>{user.personalInformation.emailAddress}</td>
                 <td>{user.personalInformation.phoneNumber}</td>
@@ -171,8 +136,8 @@ const handleFilterChange =(x:UserType[])=>{
                 <td style={{position:'relative'}}>
                   <button className={styles.more_options}  onClick={(e) => {
                 e.stopPropagation();
-                handleToggleMenu(user.personalInformation.id);
-              }}aria-label="More options">
+                handleToggleMenu((itemsPerPage*currentPage)-index, user.personalInformation.id);
+              }} aria-label="More options">
                    <HiOutlineDotsVertical className='more_options_menu_icon' />
                   </button>
                 
@@ -183,7 +148,9 @@ const handleFilterChange =(x:UserType[])=>{
         </table>
       </div>
       <div className={styles.cards_wrapper}>
-        {usersData?.map((user) => (
+         <span onClick={()=>setOpenFilter(!openFilter)} style={{width:'fit-content', cursor:'pointer'}} >Filterer <img src={dropDownIcon} alt="" /></span>
+           {openFilter&& <FilterCard onOpenFilter={()=>setOpenFilter(false)} allUser={usersData||[]} onFilterChange={handleFilterChange}  />}
+        {currentUsers?.map((user, index) => (
           <div key={user.personalInformation.id} className={styles.card}>
             <div className={styles.cardRow}>
               <span className={styles.card_label}>Organization:</span>
@@ -211,11 +178,16 @@ const handleFilterChange =(x:UserType[])=>{
                 {user.userDetails.userStatus}
               </span>
             </div>
-            <button className={styles.more_optionsCard} aria-label="More options">
+            <button  onClick={(e) => {
+                e.stopPropagation();
+                handleToggleMenu((itemsPerPage*currentPage)-index, user.personalInformation.id);
+              }} className={styles.more_optionsCard}  aria-label="More options">
              <HiOutlineDotsVertical className='more_options_menu_icon' />
             </button>
+                  {itemsPerPage-(userIndex||0) ===index && <UserMenuCard index={10000000} id={user.personalInformation.id} />}  
           </div>
         ))}
+        
       </div>
 
       <div className={styles.page_bar}>

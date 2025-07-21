@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-$sky-blue: #39CDCC;
-$text-colour: #213f7d;
-$light-text-collor: #545f7d;
+@import '../../styles/variables';
+
+$secondary-blue: #39CDCC;
+$primary-blue: #213f7d;
+$text-grey: #545f7d;
 
 .side_container {
   width: 283px;
@@ -70,11 +72,11 @@ scrollbar-width: none;
       margin-bottom: 42px;
       padding: 39px 10px 0 30px;
       .text {
-        color: $text-colour;
+        color: $primary-blue;
         margin: 0;
       }
           .icon {
-        color: $text-colour;
+        color: $primary-blue;
         width: 20px;
 
       }
@@ -90,10 +92,10 @@ scrollbar-width: none;
       cursor: pointer;
       text-decoration: none;
       opacity: 0.6;
-color: $text-colour;
+color: $primary-blue;
       &:hover {
         background-color: #39CDCC0f;
-        border-left: solid 3px $sky-blue;
+        border-left: solid 3px $secondary-blue;
         padding-left: 27px;
         opacity: 1;
       }
@@ -108,14 +110,14 @@ color: $text-colour;
   width: '100px';
 }
       .text {
-        color: $text-colour;
+        color: $primary-blue;
       }
   
     }
 
     .active {
       background-color: rgba(57, 205, 204, 0.06);
-      border-left: solid 3px $sky-blue;
+      border-left: solid 3px $secondary-blue;
       padding-left: 27px;
       opacity: 1;
     }
@@ -124,7 +126,7 @@ color: $text-colour;
     gap: 0;
     .item{
       opacity: 1;
-      color: $text-colour;
+      color: $primary-blue;
       padding: 0;
       display: flex;
       align-items: bottom;
@@ -145,7 +147,7 @@ color: $text-colour;
   
   } 
     span{
-      color: $text-colour;
+      color: $primary-blue;
       padding-left: 30px;
       padding-bottom: 20px;
     }

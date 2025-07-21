@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-$sky-blue: #39CDCC;
-$text-colour: #213f7d;
-$light-text-collor: #545f7d;
+@import '../../styles/variables';
+
 .infocards { 
 font-family: "Work Sans", sans-serif;
 margin-top: 100px;

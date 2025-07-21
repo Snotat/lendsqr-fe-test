@@ -1,3 +1,5 @@
+ "use client"
+
 import React, { useEffect, useState } from 'react'
 import styles from './Signin.module.scss';
 import logo from '../../assets/images/logo.png'
@@ -10,11 +12,8 @@ import { IoCheckmarkDoneCircle } from "react-icons/io5";
 import { BiSolidErrorCircle } from 'react-icons/bi';
 import failure from '../../assets/audio/fails.mp3'
 import successful from '../../assets/audio/successes.mp3'
+import { useNavigate } from 'react-router-dom';
 interface SignInput {
-  email: string;
-  password: string;
-}
-interface InputComplete {
   email: string;
   password: string;
 }
@@ -39,6 +38,7 @@ const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 const toggleHide =(e:React.MouseEvent<HTMLDivElement>)=>{
 setShowPassword(!showPassword)
 }
+let navigate = useNavigate()
 const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -52,6 +52,7 @@ setSignInput({
 })
 toast('Success! You would be redirected to your dashboard.', { icon: <IoCheckmarkDoneCircle className='success_icon' style={{ width: '45px', height: "45px", fontWeight: '650', color: "#17b621", paddingRight: '20px' }} /> }
                 )
+                navigate('/dashboard')
   }, 3000)
    return () => {
       clearTimeout(loadTime);

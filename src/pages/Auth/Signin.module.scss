@@ -6,11 +6,12 @@
   font-family: "AvenirNext";
   src: url("../../assets/fonts/AvenirNextCyr-Regular.ttf");
 }
+@import '../../styles//variables';
 
 $font-family: AvenirNext,'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 $font-family-bold:AvenirNextBold;
-$color1: #ffffff;
-$color2: #39cdcc;
+
+
 .signin {
   display: flex;
   flex-direction: row;
@@ -43,13 +44,12 @@ left: 13%;
       flex-wrap: nowrap;
 
      img{
-        height: 35px;
+        height: 34px;
         width: fit-content;
 
      }
      .main_logo{
-width: 25px;
-height: 25px;
+      height:26px;
      }
     }
      
@@ -91,13 +91,12 @@ left: 7%;
     display: none;
   }
      img{
-        height: 35px;
+        height: 34px;
         width: fit-content;
 
      }
      .main_logo{
-width: 25px;
-height: 25px;
+width: 26px;
      }
     }
    @media (max-width: 768px) {
@@ -152,7 +151,7 @@ input[type="password"] {
         right: 20px;
         top: 0;
         bottom: 0;
-        color: $color2;
+        color: $secondary-blue;
         padding: 0;
         border: 0;
         font-weight: 600;
@@ -180,7 +179,7 @@ color: #545F7D;
 max-width: 447px;
 &:focus{
     outline: 0;
-    border: 2px solid $color2;
+    border: 2px solid $secondary-blue;
 } 
   &:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px #fff inset;
@@ -191,8 +190,8 @@ max-width: 447px;
     .forget_text {
       font-size: 12px;
       font-weight: 600;
-      color: $color2;
-      background-color: $color1;
+      color: $secondary-blue;
+      background-color: white;
       border: none;
       padding: 0;
       text-align: left;
@@ -209,8 +208,8 @@ max-width: 447px;
     width: 100%;
     max-width: 447px;
     height: 48px;
-    background-color: $color2;
-    color: $color1;
+    background-color: $secondary-blue;
+    color: white;
     border-radius: 8px;
     border: none;
     font-weight: 600;

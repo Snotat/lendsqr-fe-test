@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import '../../styles/variables';
 
 .paginationContainer {
   display: flex;
   align-items: center;
+  margin-bottom: 16px;
+  padding: 10px;
   justify-content: center;
   gap: 8px; 
   font-family: "Work Sans", sans-serif;
@@ -25,9 +28,15 @@
     height: 14px;
    }
 
-    &.active {
-    color: #545F7D; 
+    .active {
+    color: #213F7D; 
+      font-weight: 7500;
+
+    }
+    &:active {
+    color: #213F7D; 
       font-weight: 500;
+
     }
 
     &.arrowButton {
@@ -50,6 +59,11 @@ opacity: 0.6;
     display: flex;
     flex-direction: row;
     color: #545F7D;
+      .active{
+       opacity: 1;
+      color: #213F7D!important;
+      font-weight: 600;
+    }
   }
   .pageNumbers .pageButton{
 color: #545F7D;
@@ -60,7 +74,10 @@ color: #545F7D;
     }
     &:active{
       opacity: 1;
-      font-weight: 800;
+      color: #213F7D;
+      font-weight: 500;
     }
+    
+  
   }
 }

@@ -5,6 +5,8 @@ import icon2 from '../../assets/icons/icon2.png'
 import icon3 from '../../assets/icons/icon3.png'
 import icon4 from '../../assets/icons/icon4.png'
 import usersDataJson from '../../utils/mockUser.json'
+import { Spinner } from '../Spinner/Spinner';
+import { getUsers } from '../../API/getUsers';
 
 interface StatCardProps {
   icon: string; 
@@ -59,6 +61,8 @@ interface UserType {
   userDetails: UserDetails;
 }
 const InfoPlate: React.FC<StatCardProps> = ({ icon, label, value}) => {
+
+  
   return (
     <div className={styles.plate}>
       <div className={styles.icon} >
@@ -122,24 +126,30 @@ const [cardData, setCardData] = useState<StatCardProps[]>([
       value: 0,
     },
   ])
-const [usersData, setUsersData] = useState<UserType[] | undefined>(usersDataJson||[])
-useEffect(()=>{
-usersDataJson && setUsersData(usersDataJson)
-let activeUsers= usersData?.filter(user=>{
+const [usersData, setUsersData] = useState<UserType[] | undefined>()
+const [loading, setLoading] = useState(true)
+const [error, setError] = useState(false)
+  useEffect(() => {
+    const fetchAndSetUsers = async () => {
+      setLoading(true);
+      setError(false);
+      try {
+        const users = await getUsers();
+        let activeUsers= users?.filter(user=>{
   return user.userDetails.userStatus === 'Active'
 })
-let loaningUser = usersData?.filter(user=>{
+let loaningUser = users?.filter(user=>{
   return user.educationAndEmployment.loanRepayment!=='N0'
 })
-let savingUser = usersData?.filter(user=>{
+let savingUser = users?.filter(user=>{
   return user.educationAndEmployment.savings!=='N0'
 })
-usersData &&console.log('usershhh', usersData?.[0], 'activeUsers',activeUsers?.[0], activeUsers?.length, activeUsers?.[0], "loaningUser", loaningUser?.[0], loaningUser?.length, 'saving users', savingUser?.length, savingUser?.[0])
+users &&console.log('usershhh', users?.[0], 'activeUsers',activeUsers?.[0], activeUsers?.length, activeUsers?.[0], "loaningUser", loaningUser?.[0], loaningUser?.length, 'saving users', savingUser?.length, savingUser?.[0])
  setCardData([
      {
       icon:icon1,
       label: 'USERS',
-      value: usersData?.length||0,
+      value: users?.length||0,
     },
     {
       icon: icon2,
@@ -157,7 +167,24 @@ usersData &&console.log('usershhh', usersData?.[0], 'activeUsers',activeUsers?.[
       value: savingUser?.length||0,
     },
  ])
-},[])
+        setUsersData(users);
+      } catch (err: any) {
+        setError(err.message || 'Failed to load users.');
+        console.error('Failed to fetch users in MainDash:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAndSetUsers();
+  }, []);
+
+if(loading){
+  return <Spinner/>
+}
+if(error){
+  return <h2>An error occured please refresh!</h2>
+}
   return (
     <div className={styles.infocards}>
       <h2 className={styles.title}>Users</h2>

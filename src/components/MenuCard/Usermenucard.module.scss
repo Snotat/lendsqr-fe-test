@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import '../../styles/variables';
 
-$sky-blue: #39CDCC;
-$text-colour: #213f7d;
-$light-text-collor: #545f7d;
+$secondary-blue: #39CDCC;
+$primary-blue: #213f7d;
+$text-grey: #545f7d;
 
 .user_menu_card{
-   min-width: 180px;
-   min-height: 130px;
+   width: 180px;
+   height: 130px;
    font-size: 14px;
    font-weight: 500;
    gap: 10px;
@@ -14,18 +16,37 @@ $light-text-collor: #545f7d;
    justify-content:flex-start;
    flex-direction: column;
    padding: 20px;
-   color: $light-text-collor;
-   background:#000000;
+   color: $text-grey;
+   background:#ffffff;
    border-radius: 4px;
-  
+  position: absolute;
+  right: -10px;
     gap: 20px;
+    z-index: 8;
     span{
         display: flex;
         gap: 10px;
         flex-direction: row;
         align-items: center;
         justify-content: start;
+        flex-wrap: nowrap;
+   
     }
    img{
    }
+       a{
+        
+        display: flex;
+        gap: 10px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
+        flex-wrap: nowrap;
+        text-decoration: none;
+        
+   color: $text-grey;
+   &:hover{
+    color: $secondary-blue;
+   }
+       } 
 }

@@ -9,6 +9,7 @@ import { FaCaretDown } from 'react-icons/fa';
 import bell from '../assets/images/bell.png'
 import { AiOutlineMenu } from "react-icons/ai";
 import { MdOutlineCancelPresentation } from "react-icons/md";
+import {motion} from 'framer-motion'
 
 type Props = {
   openSidebar:()=>void,
@@ -18,10 +19,10 @@ type Props = {
 function NavBar({openSidebar, sidebar}: Props) {
   return (
     <div className={styles.navbar}>
-        <div className={styles.navbar_logo} >
+        <motion.div  initial={{ x: -100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ duration: 0.3, delay: 0.1 }} viewport={{ amount: 0, once: true }} className={styles.navbar_logo} >
         <img src={logo}  style={{height:'23px', width:'23px'}}  alt="" />
         <img src={lendsqrlogo} alt="" />
-       </div >
+       </motion.div >
        { sidebar?<MdOutlineCancelPresentation  onClick={openSidebar} className={styles.menu_icon} /> :<AiOutlineMenu onClick={openSidebar} className={styles.menu_icon} />}
        <div className={styles.navbar_right}>
         <div className={styles.nav_input}>

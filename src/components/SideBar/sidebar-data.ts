@@ -19,13 +19,8 @@ import preferences from "../../assets/icons/sliders-h 1.png";
 import fees_and_pricing from "../../assets/icons/badge-percent 1.png";
 import audit_logs from "../../assets/icons/clipboard-list 1.png";
 import systems_messages from "../../assets/icons/icon.png";
+import { SidebarItem } from "../../types/UserTypes";
 
-export interface SidebarItem {
-  title: string;
-  icon?: any;
-  link?: string;
-  children?: SidebarItem[];
-}
 
 export const sidebarData: SidebarItem[] = [
   {

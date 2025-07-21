@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import '../../styles/variables';
+
 
 .navbar{
     width: 100%;
@@ -154,5 +156,5 @@ border: 0;
 
 .dashboard{
   height: fit-content;
-  background-color: #f8f8f8;
+  background-color: $background_gray;
 }

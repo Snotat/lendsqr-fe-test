@@ -5,12 +5,7 @@ import switch_org_icon from "../../assets/icons/briefcase 1.png";
 import styles from "./Sidebar.module.scss";
 import { sidebarData } from "./sidebar-data"; 
 import logoutIcon from '../../assets/icons/logout_icon.png'
-interface SidebarItem {
-  title: string;
-  icon?: string; 
-  link?: string;
-  children?: SidebarItem[];
-}
+import { SidebarItem } from "../../types/UserTypes";
 interface SidebarProps{
   open:boolean
 }
