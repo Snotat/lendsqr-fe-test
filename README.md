@@ -36,10 +36,6 @@ Source Code
 The complete source code of this project is available on GitHub:
 https://github.com/Snotat/lendsqr-fe-test
 
-Video Presentation
-Short video tutorial and review of the app:
-https://www.loom.com/share/1248403f7a2f419aa3adc7ff19342281?sid=d43b9a6f-7f10-4f59-9a48-dac94feaa649
-
 Application Overview
 This web app re-implements the most essential pages of the provided Figma design, demonstrating expertise in React, TypeScript, SCSS, and best frontend development practices.
 
