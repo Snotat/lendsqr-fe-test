@@ -1,46 +1,123 @@
-# Getting Started with Create React App
+Lendsqr Frontend Engineering Assessment
+This repository contains the solution for the Lendsqr Frontend Engineering Assessment, demonstrating mastery in React, TypeScript, and SCSS by rebuilding key pages from a provided Figma design.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Setup & Installation
+In order to run this project locally, follow the following instructions:
 
-## Available Scripts
+Clone the repository:
+git clone https://github.com/Snotat/lendsqr-fe-test.git
+cd lendsqr-fe-test
 
-In the project directory, you can run:
+Install dependencies:
 
-### `npm start`
+npm install
+# or
+yarn install
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Start the development server:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+npm start
+# or
+yarn start
 
-### `npm test`
+The app can be accessed at http://localhost:3000.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Run tests:
 
-### `npm run build`
+npm test
+# or
+yarn test
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Live Site
+View the deployed application here:
+https://shuaib-olawale-lendsqr-fe-test.netlify.app
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Source Code
+The complete source code of this project is available on GitHub:
+https://github.com/Snotat/lendsqr-fe-test
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Video Presentation
+Short video tutorial and review of the app:
+https://www.loom.com/share/1248403f7a2f419aa3adc7ff19342281?sid=d43b9a6f-7f10-4f59-9a48-dac94feaa649
 
-### `npm run eject`
+Application Overview
+This web app re-implements the most essential pages of the provided Figma design, demonstrating expertise in React, TypeScript, SCSS, and best frontend development practices.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The app has the following primary pages:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Login Page: User authentication interface.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Dashboard Page: Overview of user statistics and table/card view of user data.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+User List Page (User component): Paginated and filterable list of users.
 
-## Learn More
+User Details Page: Displays detailed data of a specific user.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Technical Stack & Rationale
+The project was built strictly adhering to the provided technical stack, with additional libraries chosen to preserve greater functionality and development simplicity.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+React
+
+TypeScript
+
+SCSS (Sass)
+
+react-router-dom
+
+axios (v1.x.x)
+
+Local Storage:
+
+sonner
+
+framer-motion
+
+react-icons
+
+Key Features & Implementation Details
+Page Structure & Routing
+The App.tsx component serves as the top-level entry point, defining the primary navigation routes using react-router-dom:
+
+/login: Renders the SignIn component.
+
+/dashboard: Renders the Dashboard component.
+
+/userdetails/:id: Renders the User component (which internally renders UserDetails) to display single user details for a dynamic id parameter.
+
+/: Redirects to /login as it's the default entry.
+
+*: Redirects all unmatched paths, displaying a "404 - Page Not Found" message.
+
+Data Fetching & Caching (getUsers.ts)
+The getUsers function in src/API/getUsers.ts makes a GET call to fetch user data from the MockAPI endpoint provided: https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users.
+
+Setup & Installation
+In order to run this project locally, follow the following instructions:
+
+Clone the repository:
+git clone https://github.com/Snotat/lendsqr-fe-test.git
+cd lendsqr-fe-test
+
+Install dependencies:
+
+npm install
+# or
+yarn install
+
+Start the development server:
+
+npm start
+# or
+yarn start
+
+The app can be accessed at http://localhost:3000.
+
+Run tests:
+
+npm test
+# or
+yarn test
+
+Contact
+Name: Shuaib Nurudeen Olawale - snotat
+Date: 21/07/2025

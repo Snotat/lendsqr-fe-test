@@ -15,7 +15,7 @@ interface FilterFormState {
   status: string;
 }
 
-
+//filter componenent to search through dashboard array
 
 interface FilterCardProp{
   allUser:UserType[],
