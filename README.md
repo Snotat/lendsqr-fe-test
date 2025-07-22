@@ -62,7 +62,7 @@ react-router-dom
 
 axios (v1.x.x)
 
-Local Storage:
+Local Storage
 
 sonner
 
@@ -87,33 +87,6 @@ The App.tsx component serves as the top-level entry point, defining the primary 
 Data Fetching & Caching (getUsers.ts)
 The getUsers function in src/API/getUsers.ts makes a GET call to fetch user data from the MockAPI endpoint provided: https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users.
 
-Setup & Installation
-In order to run this project locally, follow the following instructions:
-
-Clone the repository:
-git clone https://github.com/Snotat/lendsqr-fe-test.git
-cd lendsqr-fe-test
-
-Install dependencies:
-
-npm install
-# or
-yarn install
-
-Start the development server:
-
-npm start
-# or
-yarn start
-
-The app can be accessed at http://localhost:3000.
-
-Run tests:
-
-npm test
-# or
-yarn test
-
-Contact
-Name: Shuaib Nurudeen Olawale - snotat
+Contact: snotatonline@gmail.com
+Name: Shuaib Nurudeen Olawale - Snotat
 Date: 21/07/2025
