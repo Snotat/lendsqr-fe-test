@@ -60,7 +60,7 @@ SCSS (Sass)
 
 react-router-dom
 
-axios (v1.x.x)
+axios
 
 Local Storage
 
@@ -88,5 +88,8 @@ Data Fetching & Caching (getUsers.ts)
 The getUsers function in src/API/getUsers.ts makes a GET call to fetch user data from the MockAPI endpoint provided: https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users.
 
 Contact: snotatonline@gmail.com
+GitHub - https://github.com/snotat
+Facebook -https://fb.com/snotat
+X - https://x.com/snotat_
 Name: Shuaib Nurudeen Olawale - Snotat
 Date: 21/07/2025
