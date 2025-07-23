@@ -36,10 +36,6 @@ Source Code
 The complete source code of this project is available on GitHub:
 https://github.com/Snotat/lendsqr-fe-test
 
-Video Presentation
-Short video tutorial and review of the app:
-https://www.loom.com/share/1248403f7a2f419aa3adc7ff19342281?sid=d43b9a6f-7f10-4f59-9a48-dac94feaa649
-
 Application Overview
 This web app re-implements the most essential pages of the provided Figma design, demonstrating expertise in React, TypeScript, SCSS, and best frontend development practices.
 
@@ -64,9 +60,9 @@ SCSS (Sass)
 
 react-router-dom
 
-axios (v1.x.x)
+axios
 
-Local Storage:
+Local Storage
 
 sonner
 
@@ -91,33 +87,9 @@ The App.tsx component serves as the top-level entry point, defining the primary 
 Data Fetching & Caching (getUsers.ts)
 The getUsers function in src/API/getUsers.ts makes a GET call to fetch user data from the MockAPI endpoint provided: https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users.
 
-Setup & Installation
-In order to run this project locally, follow the following instructions:
-
-Clone the repository:
-git clone https://github.com/Snotat/lendsqr-fe-test.git
-cd lendsqr-fe-test
-
-Install dependencies:
-
-npm install
-# or
-yarn install
-
-Start the development server:
-
-npm start
-# or
-yarn start
-
-The app can be accessed at http://localhost:3000.
-
-Run tests:
-
-npm test
-# or
-yarn test
-
-Contact
-Name: Shuaib Nurudeen Olawale - snotat
+Contact: snotatonline@gmail.com
+GitHub - https://github.com/snotat
+Facebook -https://fb.com/snotat
+X - https://x.com/snotat_
+Name: Shuaib Nurudeen Olawale - Snotat
 Date: 21/07/2025

@@ -65,7 +65,7 @@ const formatDate= (dateString: string): string => {
   const day = date.getDate().toString().padStart(2, '0'); 
   return `${year}-${month}-${day}`;
 };
-const [userData, setUserData]= useState<UserType|any>()
+const [userData, setUserData]= useState<UserType[]>()
   useEffect(() => {
     const fetchAndSetUsers = async () => {
    
@@ -80,7 +80,8 @@ const [userData, setUserData]= useState<UserType|any>()
     fetchAndSetUsers();
   }, [onOpenFilter]);
 const currentFilteredData = useMemo(() => {
-let tempFilteredUsers:any[] =userData
+let tempFilteredUsers:UserType[]|undefined =userData
+console.log('temmmmp',tempFilteredUsers)
   if (filters.organization) {
     
   console.log('organizationssss', filters.organization,tempFilteredUsers)
@@ -91,37 +92,40 @@ let tempFilteredUsers:any[] =userData
 
   if (filters.username) {
     console.log('name', filters.username,tempFilteredUsers)
-    tempFilteredUsers = tempFilteredUsers.filter(data =>
+    tempFilteredUsers = tempFilteredUsers?.filter(data =>
       data.personalInformation.fullName.toLowerCase().includes(filters.username.toLowerCase())
     );
   }
   if (filters.date) {
     console.log('date',filters.date,tempFilteredUsers)
     const filterDateFormatted = formatDate(filters.date);
-    tempFilteredUsers = tempFilteredUsers.filter(data =>
+    tempFilteredUsers = tempFilteredUsers?.filter(data =>
       formatDate(data.userDetails.dateJoined) === filterDateFormatted
     );
   }
 
   if (filters.email) {
     console.log('email', filters.email,tempFilteredUsers)
-    tempFilteredUsers = tempFilteredUsers.filter(data =>
+    tempFilteredUsers = tempFilteredUsers?.filter(data =>
       data.personalInformation.emailAddress.toLowerCase().includes(filters.email.toLowerCase())
     );
   }
 
   if (filters.phoneNumber) {
     console.log('phone', filters.phoneNumber,tempFilteredUsers)
-    tempFilteredUsers = tempFilteredUsers.filter(data =>
+    tempFilteredUsers = tempFilteredUsers?.filter(data =>
       data.personalInformation.phoneNumber.includes(filters.phoneNumber)
     );
   }
 
   if (filters.status) { 
     console.log('status', filters.status,tempFilteredUsers )
-    tempFilteredUsers = tempFilteredUsers.filter(data =>
+    tempFilteredUsers = tempFilteredUsers?.filter(data =>
       data.userDetails.userStatus.toLowerCase() === filters.status.toLowerCase()
     );
+  }
+  if(!filters.status && !filters.phoneNumber && !filters.email && !filters.username && !filters.date && !filters.organization){
+    tempFilteredUsers = userData
   }
   console.log('tempFilteredUsers', tempFilteredUsers)
   return tempFilteredUsers;
@@ -138,7 +142,12 @@ let tempFilteredUsers:any[] =userData
 
   const handleFilterSubmit = (e: FormEvent) => {
     e.preventDefault();
-  onFilterChange(currentFilteredData);
+    console.log('filterssss', filters)
+    if(!filters.status && !filters.phoneNumber && !filters.email && !filters.username && !filters.date && !filters.organization){
+    onFilterChange(userData ||[]);
+  }else{
+  onFilterChange(currentFilteredData ||[]);
+  }
     onOpenFilter(false);
     
   };
@@ -162,6 +171,8 @@ let tempFilteredUsers:any[] =userData
     phoneNumber: '',
     status: '',
   })
+  
+  onFilterChange(userData||[]);
   };
 
   return (

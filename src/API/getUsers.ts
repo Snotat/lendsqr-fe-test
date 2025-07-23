@@ -4,7 +4,7 @@ import { UserType } from '../types/UserTypes';
 
 //API get request to retrive mock users
 
-const API_BASE_URL = 'https://cf4428ba85ba47a0990fd0e8d3ded5dc.api.mockbin.io/';
+const API_BASE_URL = 'https://79057870cec84f059d180a470ae87cd1.api.mockbin.io/';
 const LOCAL_STORAGE_KEY = 'lendsqrUsersData';
 const CACHE_MINUTES = 60;
 export const getUsers = async (): Promise<UserType[]> => {

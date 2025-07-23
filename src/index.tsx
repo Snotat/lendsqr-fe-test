@@ -11,6 +11,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
      <BrowserRouter>
+     
      <Toaster expand visibleToasts={2} closeButton={true} position="top-center" toastOptions={{
       style: {
         backdropFilter: "6px",

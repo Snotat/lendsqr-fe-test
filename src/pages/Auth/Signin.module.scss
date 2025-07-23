@@ -9,7 +9,7 @@
 @import '../../styles//variables';
 
 $font-family: AvenirNext,'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-$font-family-bold:AvenirNextBold;
+$font-family-bold:AvenirNextBold,'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
 
 .signin {
@@ -108,7 +108,7 @@ height: 26px;
     font-size: 40px;
     font-weight: 700;
     color: #213f7d;
-    font-family: $font-family-bold,;
+    font-family: $font-family-bold;
 margin-bottom: 10px;
 
   }

@@ -96,7 +96,7 @@ if(loading){
   return <div style={{height:'100vh'}}><Spinner/></div>
 }
 if(error){
-  return <h2>An error occured please refresh!</h2>
+  return <h2 style={{width:'100%', display:'flex', alignItems:'center', textAlign:'center', justifyContent:'center', height:'90vh', color:'red', flexDirection:'column'}}><p>An error occured,</p>  <p>please check you internet connection and refresh!</p></h2>
 }
 return (
     <div style={{position:'relative', paddingBottom:'250px'}}  className={styles.main_dash}>

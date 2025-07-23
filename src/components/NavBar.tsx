@@ -1,5 +1,5 @@
 import styles from '../pages/Dashboard/Dashboard.module.scss'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import logo from '../assets/images/logo.png'
 import lendsqrlogo from '../assets/images/lendsqr.png'
 import Bell from '../assets/icons/bell.png'
@@ -17,9 +17,10 @@ type Props = {
 }
 
 function NavBar({openSidebar, sidebar}: Props) {
+  const navigate = useNavigate()
   return (
     <div className={styles.navbar}>
-        <motion.div  initial={{ x: -100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ duration: 0.3, delay: 0.1 }} viewport={{ amount: 0, once: true }} className={styles.navbar_logo} >
+        <motion.div onClick={()=>navigate('/')} initial={{ x: -100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ duration: 0.3, delay: 0.1 }} viewport={{ amount: 0, once: true }} className={styles.navbar_logo} >
         <img src={logo}  style={{height:'23px', width:'23px'}}  alt="" />
         <img src={lendsqrlogo} alt="" />
        </motion.div >
@@ -31,7 +32,7 @@ function NavBar({openSidebar, sidebar}: Props) {
         </div>
         <div className={styles.nav_input_right}>
            
-            <Link state={{padding:"0 20px"}} to='/'>Docs</Link>
+            <Link state={{padding:"0 20px"}} to='https://github.com/Snotat/lendsqr-fe-test/blob/main/README.md'>Docs</Link>
             <img src={bell} alt=""/>
             <div className={styles.nav_user}>
             <img src={ProfilePicture} alt="" />
